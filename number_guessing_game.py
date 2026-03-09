@@ -18,12 +18,12 @@ def start_play():
 
 def generate_number():
 
-    secret = random.randint(1,20)
+    secret = random.randint(1,100)
     return secret
 
 def user_guess():
 
-    guess = int(input('Enter your guess! (1 - 20): '))
+    guess = int(input('Enter your guess! (1 - 100)'))
     return guess
 
 print('Guess the number!')
@@ -31,17 +31,24 @@ print('Guess the number!')
 while start_play():
 
     secret = generate_number()
-
-    guess = user_guess()
+    max_guesses = 10
+    guess_count = 0
     
-    while guess != secret:
-        
+    while guess_count < max_guesses:
+
+        guess_count += 1
+        print(f'Guess {guess_count} of {max_guesses}.')
+        guess = user_guess()
+
+        if guess == secret:
+            break
+
         if guess < secret:
-            print('Too low!')
-            guess = user_guess()
-            
+            print('Too low!')            
         elif guess > secret:
             print('Too high!')
-            guess = user_guess()
-
-    print('Congrats! You guessed it!')
+    
+    if guess == secret:
+        print(f'Congrats! You guessed it in {guess_count} tries!')
+    else:
+        print(f'Sorry! You used up all {max_guesses} guesses. The number was {secret}.')
