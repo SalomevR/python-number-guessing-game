@@ -17,7 +17,7 @@ A simple command-line number guessing game written in Python while practicing co
 - Random number generation
 - Loop control with break
 - Counters and state tracking
-- 
+ 
 ## Version History
 
 ### Version 1
